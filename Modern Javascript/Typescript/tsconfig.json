@@ -1,0 +1,17 @@
+{
+    // "files": [
+    //     "src/*.ts"
+    // ],
+    "compilerOptions":{
+        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "target": "es5",
+        "rootDir": "src" 
+    },
+    "exclude":[
+        "node_modules",
+        "dist"
+    ]
+}
+
+

@@ -15,5 +15,3 @@ var timesTwo = keys.map(function (key) {
 console.log('\ntimesTwo:'+timesTwo);
 console.log('keys:'+keys);
 
-
-

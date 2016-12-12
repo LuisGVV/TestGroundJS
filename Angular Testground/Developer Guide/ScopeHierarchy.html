@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="scopeExample">
+<head>
+    <title>Scope Hierarchy</title>
+    <link rel="stylesheet" type="text/css" href="./ScopeHierarchy.css">
+</head>
+<body>
+<div class="show-scope-demo">
+  <div ng-controller="GreetController">
+    Hello {{name}}!
+  </div>
+  <div ng-controller="ListController">
+    <ol>
+      <li ng-repeat="name in names">{{name}} from {{department}}</li>
+    </ol>
+  </div>
+</div>
+<script src="../angular-1.5.8.js"></script>
+<script src="../angular-route-1.5.8.js"></script>
+<script src="./ScopeHierarchy.js"></script>
+</body>
+</html>

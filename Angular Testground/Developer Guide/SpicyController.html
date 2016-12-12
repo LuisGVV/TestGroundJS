@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="SpicyApp">
+<head>
+    <title> Simple Spicy Controller test</title>
+</head>
+<body>
+    <h1>Welcome to Spicy</h1>
+    <div ng-controller="SpicyController">
+        <p>The food is {{ spice }} spicy!</p>
+        <input ng-model="customSpice" >
+        <button class="btn" ng-click="setSpice('Chily')">Chily</button>
+        <button ng-click="setSpice(customSpice)">Custom spice!</button>        
+    </div>
+
+    <script src="../angular-1.5.8.js"></script>
+    <script src="../angular-route-1.5.8.js"></script>
+    <script src="./SpicyController.js"></script>
+</body>
+</html>

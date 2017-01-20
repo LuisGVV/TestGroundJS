@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <link rel="stylesheet" href="./Assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="./Assets/jquery-3.1.1.js"></script>
+    <script src="./Assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./Assets/angular-1.6.1/angular.js"></script>
+
+    <script src="decoratorDirective.js"></script>
+</head>
+
+<body ng-controller="mainCtrl" class="container" style="padding-top: 30px">
+    <h1 my-click="clickHandler(programmer)">This header has a custom click directive</h1>
+    <p>Hy my name is {{ programmer.name }}, I'm {{ programmer.age }}, 
+        and I have {{ programmer.clickedOn }}
+    </p>
+    <ul>
+        <li ng-repeat="hobby in programmer.hobbies">{{ hobby }}</li>
+    </ul>
+
+    <video id="vid" spacebar-support event-pause="handlePause(evt)" controls preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+        <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4"></source> 
+        <source src="http://media.w3.org/2010/05/sintel/trailer.webm5" type="video/webm"></source>
+        <source src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg"></source>
+    </video>
+
+    <div ng-repeat="message in messages">{{ message.text }}</div>
+</body>
+
+</html>

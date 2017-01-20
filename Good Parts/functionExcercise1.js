@@ -18,6 +18,9 @@ var x = 1, y = 2;
 swap(x,y);
 console.log(x);
 
+var identity = function identity(arg){
+    return arg;
+}
 
 console.log(identity(3));
 
@@ -41,13 +44,10 @@ function identityf(arg){
     } 
 }
 
-var identity = function identity(arg){
-    return arg;
-}
 
-function addf(arg){
-    return function (otherArg){
-        arg+otherArg;
+function addf(x){
+    return function (y){
+        return add(x,y);
     }
 }
 
@@ -55,7 +55,14 @@ var idf = identityf(3);
 
 console.log(idf());
 
-var addedf = addf(3)(4);
+var a = 3, b =4;
 
-console.log(addedf);
+var addedf = addf(a);
+
+console.log(addedf(b));
+
+a = 5;
+
+console.log(addedf(b));
+
 

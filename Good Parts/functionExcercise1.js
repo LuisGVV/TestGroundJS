@@ -27,7 +27,7 @@ console.log(x);
  * Excercise 2:
  * Write a function that takes an argument that returns that argument
  * */
-var identity = function identity(arg){
+function identity(arg){
     return arg;
 }
 
@@ -37,11 +37,11 @@ console.log(identity(3));
  * Excercise 3:
  * Write two binary functions, add and mul, that take two numbers and return their sum and product
  */
-var add = function add(x,y){
+function add(x,y){
     return x+y;
 }
 
-var mul = function mul(x,y){
+function mul(x,y){
     return x*y;
 }
 
@@ -132,18 +132,95 @@ console.log('inc3(5):', inc3(5))
 
 function methodize (func){
     return function(y){
-        return func(this,y)
+        return func(this, y)
     }
 }
 
 Number.prototype.add = methodize(add);
 
-console.log((3).add(4))
+console.log( (3).add(4) )
 
 /**
  * Write demethodize, a function that converts a method to a binary function
  * demethodize(Number.prototype.add)(5,6) -> 11
  */
  
+function demethodize(method){
+    return function(a,b){
+        return method.apply(a, [b]);
+    }
+}
 
  
+function demethodizeAlt(method){
+    return function(a,b){
+        return method.call(a, b);
+    }
+}
+
+console.log(demethodize(Number.prototype.add)(5,6))
+
+/**
+ * Write a function twice that takes a binary function and returns a unary function that
+ * passes its argument to the binary function twice
+ */
+
+function twice(binaryFunc){
+    return function unary(value){
+        return binaryFunc(value,value);
+    }
+}
+
+var double = twice(add);
+
+console.log(double(11)); // returns 22
+
+var square = twice(mul);
+
+console.log(square(11)); // returns 121
+
+/**
+ * Write a function composeu that takes two unary functions 
+ * and returns a unary function that calls them both
+ */
+
+function composeu(unary1, unary2){
+    return function(value){
+        return unary2(unary1(value));
+    }
+}
+
+console.log(composeu(double, square)(3));
+
+/**
+ * Write a function composeb that takes two binary functions and returns
+ * a function that calls them both.
+ */
+
+function composeb(binary1, binary2){
+    return function(a,b,c){
+        return binary2(binary1(a,b),c);
+    }
+}
+
+console.log(composeb(add,mul)(2,3,5)); // 25
+
+/**
+ * Write a function that allows another function to only be called once
+ */
+
+function once(func){
+    return function(){
+        var f = func;
+        func = null;
+        return f.apply(this, arguments);
+    }
+}
+
+var add_once = once(add);
+try{
+    console.log("add_once(3,4):", add_once(3,4));
+    add_once(3,4);
+}catch (e){
+    console.log(e);
+}

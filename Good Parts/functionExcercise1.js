@@ -207,6 +207,10 @@ console.log(composeb(add,mul)(2,3,5)); // 25
 
 /**
  * Write a function that allows another function to only be called once
+ * add(3,4) OK!
+ * var add_once = once(add)
+ * add_once(3,4) // OK
+ * add_once(3,4) // Throw!
  */
 
 function once(func){
@@ -220,7 +224,78 @@ function once(func){
 var add_once = once(add);
 try{
     console.log("add_once(3,4):", add_once(3,4));
-    add_once(3,4);
+    //add_once(3,4);
 }catch (e){
     console.log(e);
 }
+
+/**
+ * Write a factory function that returns two functions that implement an up/down counter
+ * counter = counterf(10);
+ * counter.inc() -> 11
+ * counter.dec() -> 10
+ */
+
+function counterf(value){
+    var currentValue = value;
+
+    function increment(){
+        currentValue +=1;
+        return currentValue;
+    }
+
+    function decrement(){
+        currentValue -=1;
+        return currentValue;
+    }
+
+    return {
+        inc: increment,
+        dec: decrement
+    }
+}
+
+var counter = counterf(10);
+counter.inc();
+counter.dec();
+
+console.log("counter.inc():", counter.inc());
+
+var counter2 = counterf(3);
+counter2.inc();
+counter2.dec();
+
+console.log("counter2.inc():", counter2.inc());
+
+console.log("counter.inc():", counter.inc());
+
+/**
+ * Make a revocable function that takes a nice function, and returns a revoke
+ * function that denies access to the nice function, and an invoke function that
+ * can invoke the nice function until it is revoked.
+ */
+
+var temp = revocable(console.log);
+temp.invoke(7); //alert: 7
+temp.revoke();
+temp.invoke(8); // throw!
+
+function revocable(niceFunction){
+    var f = niceFunction;
+    function invoke(){
+        f.apply(this, arguments);
+    }
+
+    function revoke(){
+        f = null;
+    }
+    return {
+        invoke: invoke,
+        revoke: revoke
+    }
+}
+
+var jaja;
+
+
+console.log(234);

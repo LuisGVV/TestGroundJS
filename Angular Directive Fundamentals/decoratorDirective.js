@@ -4,18 +4,21 @@ angular.module("app", []);
 
 angular.module('app').controller("mainCtrl", function ($scope) {
     $scope.messages = [];
+
     $scope.handlePause = function (e) {
         console.log(e);
         $scope.messages.push({text: 'paused!'});
         console.log('paused!');
     }
+    
     $scope.programmer = { 
         name: 'Luis Gerardo Velasquez',
         age: 26,
         hobbies: ['guitar', 'movies', 'eating'],
         clickedOn: false
     }
-    $scope.clickHandler= function(p){
+    
+     $scope.clickHandler= function(p){
         p.clickedOn = !p.clickedOn;
     }
 });

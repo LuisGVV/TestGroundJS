@@ -24,7 +24,7 @@
         <source src="http://media.w3.org/2010/05/sintel/trailer.webm5" type="video/webm"></source>
         <source src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg"></source>
     </video>
-
+    <!-- Note: ng-repeat doesn't repeat strings because paused! === paused! -->
     <div ng-repeat="message in messages">{{ message.text }}</div>
 </body>
 

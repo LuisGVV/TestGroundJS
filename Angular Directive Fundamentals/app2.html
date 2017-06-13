@@ -12,8 +12,7 @@
 
 <body ng-controller="mainCtrl" class="container" style="padding-top: 30px">
     <h1 my-click="clickHandler(programmer)">This header has a custom click directive</h1>
-    <p>Hy my name is {{ programmer.name }}, I'm {{ programmer.age }}, 
-        and I have {{ programmer.clickedOn }}
+    <p ng-class="{ 'bg-danger': programmer.clickedOn }">Hy my name is {{ programmer.name }}, I'm {{ programmer.age }}, Current status: {{ programmer.clickedOn }}
     </p>
     <ul>
         <li ng-repeat="hobby in programmer.hobbies">{{ hobby }}</li>

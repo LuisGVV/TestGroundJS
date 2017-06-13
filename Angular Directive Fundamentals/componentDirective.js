@@ -12,7 +12,8 @@ angular.module("app").controller("mainCtrl", function ($scope) {
             'Han',
             'Leia',
             'Chewbacca'
-        ]
+        ],
+        level: 0
     }
     $scope.user2 = {
         name: 'Han Solo',
@@ -25,7 +26,8 @@ angular.module("app").controller("mainCtrl", function ($scope) {
             'Luke',
             'Leia',
             'Chewbacca'
-        ]
+        ],
+        level: 2
     }
 });
 
@@ -39,6 +41,10 @@ angular.module('app').directive('userInfoCard', function () {
         },
         controller: function ($scope) {
             $scope.collapsed = ($scope.initialCollapsed === 'true');
+            $scope.nextState = function nextState() {
+                $scope.user.level++;
+                $scope.user.level = $scope.user.level % 3;
+            }
             $scope.knightMe = function (user) {
                 user.rank = "knight";
             };
@@ -92,6 +98,27 @@ angular.module('app').directive('address', function () {
             $scope.expandAddress = function () {
                 $scope.collapsed = false;
             }
+        }
+    }
+});
+
+angular.module('app').directive('stateDisplay', function () {
+    return {
+        restrict: 'A',
+        link: function linkFunction(scope, element, attributes) {
+            scope.$watch(attributes['stateDisplay'], function(newVal){
+                switch (newVal) {
+                    case 0:
+                        element.css('background-color', 'white');
+                        break;
+                    case 1:
+                        element.css('background-color', 'yellow');
+                        break;
+                    case 2:
+                        element.css('background-color', 'red');
+                        break;
+                }
+            })
         }
     }
 });

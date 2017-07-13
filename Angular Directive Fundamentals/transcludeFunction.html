@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <link rel="stylesheet" href="./Assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./Assets/jquery-3.1.1.js"></script>
+    <script src="./Assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./Assets/angular-1.6.1/angular.js"></script>
+    <script src="structuralDirective.js"></script>
+</head>
+
+<body ng-controller="mainCtrl" class="container">
+    <h1>My structural/transcluded stuff</h1>
+    <div my-transclude>
+        <div data-ng-repeat="item in items">
+            {{item}}
+        </div>
+    </div>
+</body>
+
+</html>

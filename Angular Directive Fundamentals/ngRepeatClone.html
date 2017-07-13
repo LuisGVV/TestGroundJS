@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+
+<head>
+    <link rel="stylesheet" href="./Assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./Assets/jquery-3.1.1.js"></script>
+    <script src="./Assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./Assets/angular-1.6.1/angular.js"></script>
+    <script src="ngRepeatClone.js"></script>
+</head>
+
+<body data-ng-controller="mainCtrl" class="container">
+    <h1 class="well">Bounty Hunters</h1>
+    <div data-my-repeat="hunter in bountyHunters">
+        <span>Name: {{hunter.name}}</span>
+    </div>
+    <button class="btn btn-primary" data-ng-click="add()">Add</button>
+    <button class="btn btn-danger" data-ng-click="remove()">Remove</button>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.panel-primary > .white {
+    color: white;
+}
+
+.panel-primary > .yellow {
+    color: yellow;
+}
+
+.panel-primary > .red {
+    color: red;
+}

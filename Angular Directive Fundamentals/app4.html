@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <link rel="stylesheet" href="./Assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="./Assets/jquery-3.1.1.js"></script>
+    <script src="./Assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./Assets/angular-1.6.1/angular.js"></script>
+
+    <script src="transclusion.js"></script>
+</head>
+
+<body ng-controller="mainCtrl" class="container" style="padding-top: 30px">
+    <display-box>
+        <div>This content is inside lol</div>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        {{message}}
+    </display-box>
+</body>
+
+</html>
